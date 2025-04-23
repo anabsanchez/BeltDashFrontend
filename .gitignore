@@ -13,3 +13,23 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# C# build artifacts
+*.csproj.user
+*.sln
+*.user
+*.suo
+*.dll
+*.exe
+
+# Common build folders
+/bin/
+/obj/
+/Build/
+
+# VSCode settings
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db
