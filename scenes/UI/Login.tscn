@@ -1,4 +1,14 @@
-[gd_scene format=3 uid="uid://doa0xp7s4yq37"]
+[gd_scene load_steps=4 format=3 uid="uid://doa0xp7s4yq37"]
+
+[ext_resource type="Theme" uid="uid://cpg3008qpceks" path="res://config/UITheme.tres" id="1_k8nfp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfbv4"]
+bg_color = Color(0.457177, 0.562635, 1, 1)
+
+[sub_resource type="Theme" id="Theme_joay3"]
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/icons/icon = null
+Button/styles/disabled = SubResource("StyleBoxFlat_hfbv4")
 
 [node name="Login" type="Control"]
 layout_mode = 3
@@ -17,30 +27,87 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0509804, 0.0666667, 0.0901961, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
-custom_minimum_size = Vector2(600, 500)
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -200.0
-offset_right = 300.0
-offset_bottom = 200.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="TitleLabel" type="Label" parent="ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(200, 100)
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 700)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("1_k8nfp")
+theme_override_constants/separation = 100
 
-[node name="HeaderLabel" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Login"
+horizontal_alignment = 1
+
+[node name="FormContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="UsernameContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer"]
 layout_mode = 2
 
-[node name="RankingTree" type="Tree" parent="ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(200, 400)
+[node name="UsernameLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/UsernameContainer"]
 layout_mode = 2
-columns = 3
+theme_override_font_sizes/font_size = 30
+text = "Username"
+
+[node name="UsernameInput" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/UsernameContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter your username here"
+
+[node name="PasswordContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer"]
+layout_mode = 2
+
+[node name="PasswordLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/PasswordContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Password"
+
+[node name="PasswordInput" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/PasswordContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter your password here"
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SignInButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+theme = SubResource("Theme_joay3")
+theme_override_font_sizes/font_size = 30
+text = "Sign in"
+
+[node name="RegisterLinkButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.25098, 0.705882, 0.337255, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.25098, 0.705882, 0.337255, 0.784314)
+theme_override_colors/font_pressed_color = Color(0.25098, 0.705882, 0.337255, 1)
+theme_override_colors/font_focus_color = Color(0.25098, 0.705882, 0.337255, 1)
+theme_override_colors/font_color = Color(0.25098, 0.705882, 0.337255, 1)
+theme_override_font_sizes/font_size = 20
+text = "Create an account"
+flat = true

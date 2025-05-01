@@ -1,12 +1,15 @@
-[gd_scene format=3 uid="uid://cvfxshnsu1bcb"]
+[gd_scene load_steps=2 format=3 uid="uid://cnsymccsb4uij"]
 
-[node name="Admin" type="Control"]
+[ext_resource type="Script" path="res://scripts/core/Main.cs" id="1_xy35y"]
+
+[node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xy35y")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
