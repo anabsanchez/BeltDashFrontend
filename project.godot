@@ -12,9 +12,18 @@ config_version=5
 
 config/name="BeltDash"
 run/main_scene="res://scenes/UI/Login.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [dotnet]
 
 project/assembly_name="BeltDash"
+
+[gui]
+
+theme/custom="res://config/UITheme.tres"
