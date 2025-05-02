@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnsymccsb4uij"]
+[gd_scene load_steps=4 format=3 uid="uid://cnsymccsb4uij"]
 
 [ext_resource type="Script" path="res://scripts/core/Main.cs" id="1_xy35y"]
 [ext_resource type="Texture2D" uid="uid://c15yl0srr58be" path="res://assets/sprites/background/SpaceBackground.png" id="2_cl7yp"]
 [ext_resource type="Script" path="res://scenes/SpaceParallax.cs" id="2_du8pm"]
-[ext_resource type="Texture2D" uid="uid://llg4nehcvr4u" path="res://assets/sprites/background/SurpriseStars1.png" id="4_7a5cf"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -14,27 +13,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xy35y")
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(0, 3000)
+autoscroll = Vector2(0, -2)
+script = ExtResource("2_du8pm")
+
+[node name="SpaceBackground" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(960, 1500)
+texture = ExtResource("2_cl7yp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScreenContainer" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0509804, 0.0666667, 0.0901961, 1)
-
-[node name="Parallax2D" type="Parallax2D" parent="Background"]
-repeat_size = Vector2(0, 3000)
-autoscroll = Vector2(0, 2)
-script = ExtResource("2_du8pm")
-
-[node name="SpaceBackground" type="Sprite2D" parent="Background/Parallax2D"]
-position = Vector2(962, 1502)
-texture = ExtResource("2_cl7yp")
-
-[node name="Parallax2D2" type="Parallax2D" parent="Background"]
-
-[node name="SurpriseStars1" type="Sprite2D" parent="Background/Parallax2D2"]
-visible = false
-position = Vector2(960, 1501)
-texture = ExtResource("4_7a5cf")

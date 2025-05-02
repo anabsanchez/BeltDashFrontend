@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://doa0xp7s4yq37"]
+[gd_scene load_steps=5 format=3 uid="uid://doa0xp7s4yq37"]
 
 [ext_resource type="Theme" uid="uid://cpg3008qpceks" path="res://config/UITheme.tres" id="1_k8nfp"]
+[ext_resource type="Script" path="res://scripts/ui/Login.cs" id="1_slmqh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfbv4"]
 bg_color = Color(0.457177, 0.562635, 1, 1)
@@ -17,8 +18,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_slmqh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

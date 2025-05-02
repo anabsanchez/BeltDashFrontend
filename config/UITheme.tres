@@ -19,6 +19,7 @@ bg_color = Color(0.184314, 0.505882, 0.968627, 1)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [resource]
+Button/constants/h_separation = 6
 Button/styles/hover = SubResource("StyleBoxFlat_kvylb")
 Button/styles/normal = SubResource("StyleBoxFlat_r1oqy")
 Button/styles/pressed = SubResource("StyleBoxFlat_0451n")
