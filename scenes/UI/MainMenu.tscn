@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://qp33n2061y5i"]
 
+[ext_resource type="Script" path="res://scripts/ui/MainMenu.cs" id="1_c4g88"]
 [ext_resource type="Theme" uid="uid://cpg3008qpceks" path="res://config/UITheme.tres" id="1_ggtfh"]
-[ext_resource type="Script" path="res://scenes/UI/MainMenu.cs" id="1_hdiy1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ld3p"]
 bg_color = Color(0.457177, 0.562635, 1, 1)
@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_hdiy1")
+script = ExtResource("1_c4g88")
 
 [node name="Background" type="ColorRect" parent="."]
 visible = false

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/core/Main.cs" id="1_xy35y"]
 [ext_resource type="Texture2D" uid="uid://c15yl0srr58be" path="res://assets/sprites/background/SpaceBackground.png" id="2_cl7yp"]
-[ext_resource type="Script" path="res://scenes/SpaceParallax.cs" id="2_du8pm"]
+[ext_resource type="Script" path="res://scripts/managers/SpaceParallax.cs" id="2_gsftn"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -16,7 +16,7 @@ script = ExtResource("1_xy35y")
 [node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(0, 3000)
 autoscroll = Vector2(0, -2)
-script = ExtResource("2_du8pm")
+script = ExtResource("2_gsftn")
 
 [node name="SpaceBackground" type="Sprite2D" parent="Parallax2D"]
 position = Vector2(960, 1500)

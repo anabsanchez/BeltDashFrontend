@@ -4,8 +4,8 @@ using System;
 public partial class SpaceParallax : Parallax2D
 {
 	[Export] public float InitialScrollSpeed = -2f;
-    [Export] public float MaxGameScrollSpeed = 8f;
-    [Export] public float Acceleration = 0.5f;
+    [Export] public float MaxGameScrollSpeed = 1000f;
+    [Export] public float Acceleration = 30f;
     [Export] public float Deceleration = 1.5f;
 
     private float currentSpeed;
@@ -34,12 +34,20 @@ public partial class SpaceParallax : Parallax2D
 	{
 		isInGame = true;
 		targetSpeed = MaxGameScrollSpeed;
+    	GD.Print("StartGame called, new targetSpeed: ", targetSpeed);
 	}
 	
-	public void StopForTransition()
+	public async void StopForTransition()
 	{
 		isInGame = false;
-		targetSpeed = 0;
+		currentSpeed = currentSpeed * 15;
+
+        await ToSignal(GetTree().CreateTimer(0.6f), "timeout");
+		currentSpeed  = 0;
+
+        await ToSignal(GetTree().CreateTimer(0.2f), "timeout");
+
+    	GD.Print("StopForTransition called");
 	}
 
 	public void GameOver()
