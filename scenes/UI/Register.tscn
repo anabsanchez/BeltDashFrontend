@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://3aq2usy4p17s"]
+[gd_scene load_steps=5 format=3 uid="uid://3aq2usy4p17s"]
 
+[ext_resource type="Script" path="res://scripts/ui/Register.cs" id="1_56uu7"]
 [ext_resource type="Theme" uid="uid://cpg3008qpceks" path="res://config/UITheme.tres" id="1_oq5rr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5nnwc"]
@@ -17,8 +18,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_56uu7")
 
 [node name="Background" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

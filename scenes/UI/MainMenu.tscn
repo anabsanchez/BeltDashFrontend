@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://qp33n2061y5i"]
+[gd_scene load_steps=5 format=3 uid="uid://qp33n2061y5i"]
 
+[ext_resource type="Script" path="res://scripts/ui/MainMenu.cs" id="1_c4g88"]
 [ext_resource type="Theme" uid="uid://cpg3008qpceks" path="res://config/UITheme.tres" id="1_ggtfh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ld3p"]
@@ -17,8 +18,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_c4g88")
 
 [node name="Background" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,17 +69,18 @@ theme_override_constants/separation = 50
 [node name="PlayButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
 layout_mode = 2
 theme = SubResource("Theme_xk3kp")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
+action_mode = 0
 text = "Play"
 
 [node name="RankingButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
 layout_mode = 2
 theme = SubResource("Theme_xk3kp")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "Ranking"
 
 [node name="OptionsButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
 layout_mode = 2
 theme = SubResource("Theme_xk3kp")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "Options"
