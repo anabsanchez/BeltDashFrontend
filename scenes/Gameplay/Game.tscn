@@ -1,6 +1,107 @@
-[gd_scene load_steps=2 format=3 uid="uid://o4uap8ps1622"]
+[gd_scene load_steps=19 format=3 uid="uid://o4uap8ps1622"]
 
 [ext_resource type="Script" path="res://scripts/managers/Game.cs" id="1_2yu1s"]
+[ext_resource type="Texture2D" uid="uid://fqhw4u4q7gem" path="res://assets/sprites/spaceship/SpaceshipForwardSpritesheet.png" id="2_sa62p"]
+[ext_resource type="Texture2D" uid="uid://cy4jmer5rog87" path="res://assets/sprites/spaceship/SpaceshipRightSpritesheet.png" id="3_sxwxa"]
+[ext_resource type="Script" path="res://scenes/Gameplay/Spaceship.cs" id="4_vye0i"]
+[ext_resource type="Script" path="res://scripts/ui/GameScore.cs" id="5_jshp7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spwgf"]
+atlas = ExtResource("2_sa62p")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gdif"]
+atlas = ExtResource("2_sa62p")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4udjj"]
+atlas = ExtResource("2_sa62p")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfqvu"]
+atlas = ExtResource("2_sa62p")
+region = Rect2(3072, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpwxd"]
+atlas = ExtResource("2_sa62p")
+region = Rect2(4096, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78s7k"]
+atlas = ExtResource("2_sa62p")
+region = Rect2(5120, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vv0a"]
+atlas = ExtResource("3_sxwxa")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ffpm"]
+atlas = ExtResource("3_sxwxa")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l04b4"]
+atlas = ExtResource("3_sxwxa")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_445de"]
+atlas = ExtResource("3_sxwxa")
+region = Rect2(3072, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18rsp"]
+atlas = ExtResource("3_sxwxa")
+region = Rect2(4096, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3r8a"]
+atlas = ExtResource("3_sxwxa")
+region = Rect2(5120, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5p6d2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spwgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gdif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4udjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfqvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpwxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78s7k")
+}],
+"loop": true,
+"name": &"forward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vv0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ffpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l04b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_445de")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18rsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3r8a")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -9,14 +110,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 script = ExtResource("1_2yu1s")
 
-[node name="Background" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0509804, 0.0666667, 0.0901961, 1)
+[node name="Spaceship" type="AnimatedSprite2D" parent="."]
+position = Vector2(994, 804)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_5p6d2")
+animation = &"forward"
+script = ExtResource("4_vye0i")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+
+[node name="GameScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 30.0
+offset_right = 746.0
+offset_bottom = 119.0
+theme_override_font_sizes/font_size = 80
+text = "0"
+script = ExtResource("5_jshp7")
