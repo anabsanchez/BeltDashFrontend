@@ -1,15 +1,22 @@
 using Godot;
 using System;
 
-public partial class Spaceship : AnimatedSprite2D
+public partial class Spaceship : Node2D
 {
     [Export] public float Speed = 300f;
     private Vector2 velocity = Vector2.Zero;
+    private AnimatedSprite2D sprite;
+    private CollisionShape2D collisionShape;
+    [Export] public float LeftLimit = -500f;
+    [Export] public float RightLimit = 500f; 
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
-	{
-		Play("forward"); 
+	{        
+        sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
+		
+        sprite.Play("forward"); 
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,28 +40,33 @@ public partial class Spaceship : AnimatedSprite2D
             velocity.X -= 1;
         }
 
-        // Normalizar para evitar movimientos más rápidos en diagonal
         velocity = velocity.Normalized();
 
-        // Aplicar el movimiento horizontal (sin movimiento vertical)
-        Position += velocity * Speed * (float)delta;
+        float newX = Position.X + velocity.X * Speed * (float)delta;
+        newX = Mathf.Clamp(newX, LeftLimit, RightLimit);
+        Position = new Vector2(newX, Position.Y);
     }
 
     private void UpdateAnimation()
     {
         if (velocity.X > 0)
         {
-            FlipH = false;
-            Play("side");
+            sprite.FlipH = false;
+            sprite.Play("side");
         }
         else if (velocity.X < 0)
         {
-            FlipH = true;
-            Play("side");
+            sprite.FlipH = true;
+            sprite.Play("side");
         }
         else
         {
-            Play("forward");
-        }
+            sprite.Play("forward");
+        }    
+    }
+
+    private void OnCollision()
+    {
+        GD.Print("Boom!");
     }
 }

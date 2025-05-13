@@ -18,6 +18,6 @@ public partial class MainMenu : Control
     private void OnPlayPressed()
     {
         var main = GetNode<Main>("/root/Main");
-        main.LoadScreen("res://scenes/Gameplay/Game.tscn");
+        main.LoadScreen("scenes/Gameplay/Game.tscn");
     }
 }

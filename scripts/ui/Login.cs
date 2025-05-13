@@ -21,12 +21,12 @@ public partial class Login : Control
     private void OnSignInPressed()
     {
         var main = GetNode<Main>("/root/Main");
-        main.LoadScreen("res://scenes/UI/MainMenu.tscn");
+        main.LoadScreen("scenes/UI/MainMenu.tscn");
     }
 
     private void OnRegisterLinkPressed()
     {
         var main = GetNode<Main>("/root/Main");
-        main.LoadScreen("res://scenes/UI/Register.tscn");
+        main.LoadScreen("scenes/UI/Register.tscn");
     }
 }

@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://o4uap8ps1622"]
+[gd_scene load_steps=21 format=3 uid="uid://o4uap8ps1622"]
 
 [ext_resource type="Script" path="res://scripts/managers/Game.cs" id="1_2yu1s"]
 [ext_resource type="Texture2D" uid="uid://fqhw4u4q7gem" path="res://assets/sprites/spaceship/SpaceshipForwardSpritesheet.png" id="2_sa62p"]
 [ext_resource type="Texture2D" uid="uid://cy4jmer5rog87" path="res://assets/sprites/spaceship/SpaceshipRightSpritesheet.png" id="3_sxwxa"]
-[ext_resource type="Script" path="res://scenes/Gameplay/Spaceship.cs" id="4_vye0i"]
+[ext_resource type="Script" path="res://scripts/managers/Spaceship.cs" id="4_651xx"]
 [ext_resource type="Script" path="res://scripts/ui/GameScore.cs" id="5_jshp7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_spwgf"]
@@ -103,6 +103,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_a3lax"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3oqmq"]
+
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -113,13 +117,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_2yu1s")
 
-[node name="Spaceship" type="AnimatedSprite2D" parent="."]
-position = Vector2(994, 804)
-scale = Vector2(0.2, 0.2)
-sprite_frames = SubResource("SpriteFrames_5p6d2")
-animation = &"forward"
-script = ExtResource("4_vye0i")
-
 [node name="GameScoreLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 454.0
@@ -129,3 +126,25 @@ offset_bottom = 119.0
 theme_override_font_sizes/font_size = 80
 text = "0"
 script = ExtResource("5_jshp7")
+
+[node name="Spaceship" type="Node2D" parent="."]
+script = ExtResource("4_651xx")
+LeftLimit = -500.0
+RightLimit = 500.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Spaceship"]
+position = Vector2(994, 804)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_5p6d2")
+animation = &"forward"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spaceship"]
+polygon = PackedVector2Array(938, 835, 935, 826, 936, 805, 968, 782, 976, 753, 984, 743, 990, 743, 996, 752, 1005, 781, 1036, 805, 1038, 829, 1033, 836, 1006, 823, 998, 836, 976, 837, 968, 823)
+
+[node name="Obstacle" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
+texture = SubResource("AnimatedTexture_a3lax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+shape = SubResource("CircleShape2D_3oqmq")
