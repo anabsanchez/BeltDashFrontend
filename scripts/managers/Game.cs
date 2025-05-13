@@ -22,7 +22,7 @@ public partial class Game : Control
         scoreLabel.ResetScore();
 
         timer = this.GetNode<Timer>("./Timer");
-        timer.Timeout += OnTimerTimeout; // Conectar señal correctamente
+        timer.Timeout += OnTimerTimeout;
         timer.Start();
 
 	}
@@ -34,20 +34,17 @@ public partial class Game : Control
 
     private void OnTimerTimeout()
     {
-        // Instanciar obstáculo nuevo desde una escena si lo deseas
         // var obstacleScene = GD.Load<PackedScene>("res://scenes/Obstacles/Asteroid.tscn");
         // var newObstacle = (Node2D)obstacleScene.Instantiate();
 
-        // O si estás usando un objeto ya definido en código (menos común):
         // Obstacle newObstacle = new();
+        // Una vez creado el obstáculo, se vuelve a instanciar una de las dos imágenes
 
         Random rnd = new();
-        var newObstacle = new Node2D(); // ⚠️ temporal, deberías reemplazarlo por tu escena real
-
+        var newObstacle = new Node2D();
         newObstacle.GlobalPosition = new Vector2(rnd.Next(300, 1700), -4000);
         AddChild(newObstacle);
 
-        // Establecer nuevo intervalo aleatorio entre 1 y 4 segundos
         timer.WaitTime = rnd.Next(1, 5);
         timer.Start();
         

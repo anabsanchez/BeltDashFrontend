@@ -120,8 +120,6 @@ sprite_frames = SubResource("SpriteFrames_5p6d2")
 animation = &"forward"
 script = ExtResource("4_vye0i")
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-
 [node name="GameScoreLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 454.0
