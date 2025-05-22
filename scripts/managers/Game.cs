@@ -5,10 +5,10 @@ public partial class Game : Control
 {
     private GameScore scoreLabel;
     private Timer timer;
+    private Node2D asteroidPrototype;
 
-	// Called when the node enters the scene tree for the first time.
-	public override async void _Ready()
-	{
+    public override async void _Ready()
+    {
         var parallax = GetNode<SpaceParallax>("/root/Main/Parallax2D");
         GD.Print(parallax);
 
@@ -21,43 +21,32 @@ public partial class Game : Control
         scoreLabel = GetNode<GameScore>("./GameScoreLabel");
         scoreLabel.ResetScore();
 
-        timer = this.GetNode<Timer>("./Timer");
-        timer.Timeout += OnTimerTimeout;
+        timer = GetNode<Timer>("./Timer");
+        timer.Timeout += _on_timer_timeout;
+
+        timer.WaitTime = 1f; 
         timer.Start();
-
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
-    private void OnTimerTimeout()
-    {
-        // var obstacleScene = GD.Load<PackedScene>("res://scenes/Obstacles/Asteroid.tscn");
-        // var newObstacle = (Node2D)obstacleScene.Instantiate();
-
-        // Obstacle newObstacle = new();
-        // Una vez creado el obstáculo, se vuelve a instanciar una de las dos imágenes
-
-        Random rnd = new();
-        var newObstacle = new Node2D();
-        newObstacle.GlobalPosition = new Vector2(rnd.Next(300, 1700), -4000);
-        AddChild(newObstacle);
-
-        timer.WaitTime = rnd.Next(1, 5);
-        timer.Start();
-        
     }
 
-    public void _on_timer_timeout(){
-        //Obstacle newObstacle = new();
-        Random rnd = new();
-        //newObstacle.GlobalPosition = new Vector2(rnd.Next(300, 1700), -4000);
-        //this.AddChild(newObstacle);
+    private void _on_timer_timeout()
+    {
+        Random rnd = new Random();
 
-        timer.WaitTime = rnd.Next(0,4);
+        Asteroid newAsteroid = GD.Load<PackedScene>("res://scenes/Gameplay/asteroid.tscn").Instantiate() as Asteroid;
+
+        // newAsteroid.GlobalPosition = new Vector2(rnd.Next(300, 1700), -200);
+
+        float minX = -500f;
+        float maxX = 500f;
+
+        float randomX = (float)rnd.NextDouble() * (maxX - minX) + minX;
+        newAsteroid.GlobalPosition = new Vector2(randomX, -200);
+
+        newAsteroid.Visible = true;
+
+        AddChild(newAsteroid);
+
+        timer.WaitTime = (float)rnd.NextDouble() * 3f;
         timer.Start();
-        rnd = null;
     }
 }

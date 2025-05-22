@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Asteroid : Node2D
+public partial class Asteroid : Area2D
 {
 	[Export] public float Speed = 200f;  
     [Export] public float RotationSpeed = 50f;  
@@ -19,14 +19,14 @@ public partial class Asteroid : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        Position += new Vector2(0, Speed * (float)delta);
+        GlobalPosition += new Vector2(0, Speed * (float)delta);
 
         sprite.Rotation += Mathf.DegToRad(RotationSpeed * (float)delta);
 
 
-        if (Position.Y > GetViewportRect().Size.Y + 150) 
+        if (GlobalPosition.Y > this.GetParent().GetNode<AnimatedSprite2D>("./Spaceship/AnimatedSprite2D").GlobalPosition.Y + 450) 
         {
-            QueueFree();
+           this.GetParent().RemoveChild(this);
         }
 	}
 
@@ -41,5 +41,11 @@ public partial class Asteroid : Node2D
     {
         Random rnd = new();
         RotationSpeed = rnd.Next(-50, 50);
+    }
+
+    private void _on_body_entered(Node2D body){
+        if(body is Spaceship){
+            GD.Print("Choque");
+        }
     }
 }

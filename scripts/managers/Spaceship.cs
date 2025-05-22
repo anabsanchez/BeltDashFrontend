@@ -1,12 +1,12 @@
 using Godot;
 using System;
 
-public partial class Spaceship : Node2D
+public partial class Spaceship : CharacterBody2D
 {
     [Export] public float Speed = 300f;
     private Vector2 velocity = Vector2.Zero;
     private AnimatedSprite2D sprite;
-    private CollisionShape2D collisionShape;
+    private CollisionPolygon2D collisionPolygon2D;
     [Export] public float LeftLimit = -500f;
     [Export] public float RightLimit = 500f; 
 
@@ -14,7 +14,7 @@ public partial class Spaceship : Node2D
 	public override void _Ready()
 	{        
         sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
+        collisionPolygon2D = GetNode<CollisionPolygon2D>("./CollisionPolygon2D");
 		
         sprite.Play("forward"); 
 	}

@@ -1,12 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://o4uap8ps1622"]
+[gd_scene load_steps=20 format=3 uid="uid://o4uap8ps1622"]
 
 [ext_resource type="Script" path="res://scripts/managers/Game.cs" id="1_2yu1s"]
 [ext_resource type="Texture2D" uid="uid://fqhw4u4q7gem" path="res://assets/sprites/spaceship/SpaceshipForwardSpritesheet.png" id="2_sa62p"]
 [ext_resource type="Texture2D" uid="uid://cy4jmer5rog87" path="res://assets/sprites/spaceship/SpaceshipRightSpritesheet.png" id="3_sxwxa"]
 [ext_resource type="Script" path="res://scripts/managers/Spaceship.cs" id="4_651xx"]
 [ext_resource type="Script" path="res://scripts/ui/GameScore.cs" id="5_jshp7"]
-[ext_resource type="Script" path="res://scripts/managers/Asteroid.cs" id="6_2wpf2"]
-[ext_resource type="Texture2D" uid="uid://vx8ejc688bec" path="res://assets/sprites/obstacles/ObstaclesSpritesheet.png" id="6_6dwb5"]
+[ext_resource type="PackedScene" uid="uid://cbbyvicv0m05a" path="res://scenes/Gameplay/asteroid.tscn" id="6_epgbh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_spwgf"]
 atlas = ExtResource("2_sa62p")
@@ -105,9 +104,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3oqmq"]
-radius = 53.0848
-
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -128,7 +124,8 @@ theme_override_font_sizes/font_size = 80
 text = "0"
 script = ExtResource("5_jshp7")
 
-[node name="Spaceship" type="Node2D" parent="."]
+[node name="Spaceship" type="CharacterBody2D" parent="."]
+collision_mask = 2
 script = ExtResource("4_651xx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Spaceship"]
@@ -140,18 +137,6 @@ animation = &"forward"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spaceship"]
 polygon = PackedVector2Array(938, 835, 935, 826, 936, 805, 968, 782, 976, 753, 984, 743, 990, 743, 996, 752, 1005, 781, 1036, 805, 1038, 829, 1033, 836, 1006, 823, 998, 836, 976, 837, 968, 823)
 
-[node name="Asteroid" type="Node2D" parent="."]
-position = Vector2(118, 12)
-script = ExtResource("6_2wpf2")
+[node name="Asteroid" parent="." instance=ExtResource("6_epgbh")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroid"]
-position = Vector2(943, -102)
-shape = SubResource("CircleShape2D_3oqmq")
-debug_color = Color(0.984314, 0, 0.337255, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Asteroid"]
-position = Vector2(959, -95)
-scale = Vector2(0.613636, 0.65176)
-texture = ExtResource("6_6dwb5")
-hframes = 3
-vframes = 3
+[node name="Timer" type="Timer" parent="."]
