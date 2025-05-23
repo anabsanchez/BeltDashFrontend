@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds8uwxb1t0yml"
-path="res://.godot/imported/Obstacles1.png-1652300738de52966de36c9cfc408a90.ctex"
+uid="uid://cy4jmer5rog87"
+path="res://.godot/imported/SpaceshipRightSpritesheet.png-3f2ef0a7dc2e51ae8a696e8b66a6ca6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/obstacles/Obstacles1.png"
-dest_files=["res://.godot/imported/Obstacles1.png-1652300738de52966de36c9cfc408a90.ctex"]
+source_file="res://assets/sprites/spaceship/SpaceshipRightSpritesheet.png"
+dest_files=["res://.godot/imported/SpaceshipRightSpritesheet.png-3f2ef0a7dc2e51ae8a696e8b66a6ca6e.ctex"]
 
 [params]
 

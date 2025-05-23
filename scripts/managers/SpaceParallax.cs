@@ -34,7 +34,7 @@ public partial class SpaceParallax : Parallax2D
 	{
 		isInGame = true;
 		targetSpeed = MaxGameScrollSpeed;
-    	GD.Print("StartGame called, new targetSpeed: ", targetSpeed);
+    	GD.Print("StartGame is here mfs, new targetSpeed: ", targetSpeed);
 	}
 	
 	public async void StopForTransition()
@@ -47,7 +47,7 @@ public partial class SpaceParallax : Parallax2D
 
         await ToSignal(GetTree().CreateTimer(0.2f), "timeout");
 
-    	GD.Print("StopForTransition called");
+    	GD.Print("Jelou");
 	}
 
 	public void GameOver()

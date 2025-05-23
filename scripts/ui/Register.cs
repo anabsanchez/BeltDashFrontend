@@ -21,12 +21,12 @@ public partial class Register : Control
     private void OnSignUpPressed()
     {
         var main = GetNode<Main>("/root/Main");
-        main.LoadScreen("res://scenes/UI/MainMenu.tscn");
+        main.LoadScreen("scenes/UI/MainMenu.tscn");
     }
 
     private void OnLoginLinkPressed()
     {
         var main = GetNode<Main>("/root/Main");
-        main.LoadScreen("res://scenes/UI/Login.tscn");
+        main.LoadScreen("scenes/UI/Login.tscn");
     }
 }

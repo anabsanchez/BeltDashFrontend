@@ -10,7 +10,7 @@ public partial class Main : Control
 	{
         screenContainer = GetNode<Control>("CanvasLayer/ScreenContainer");
         
-        LoadScreen("res://scenes/UI/Login.tscn");
+        LoadScreen("scenes/UI/Login.tscn");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
