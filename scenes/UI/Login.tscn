@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://doa0xp7s4yq37"]
+[gd_scene load_steps=6 format=3 uid="uid://doa0xp7s4yq37"]
 
 [ext_resource type="Theme" uid="uid://ccy7eg8njm6de" path="res://config/UITheme.tres" id="1_k8nfp"]
 [ext_resource type="Script" path="res://scripts/ui/Login.cs" id="1_slmqh"]
@@ -11,6 +11,8 @@ Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/icons/icon = null
 Button/styles/disabled = SubResource("StyleBoxFlat_hfbv4")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nree3"]
+
 [node name="Login" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -19,16 +21,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_slmqh")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0509804, 0.0666667, 0.0901961, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -66,15 +58,16 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="UsernameContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer"]
+[node name="EmailContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer"]
 layout_mode = 2
 
-[node name="UsernameLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/UsernameContainer"]
+[node name="EmailLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/EmailContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Username"
+text = "Email
+"
 
-[node name="UsernameInput" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/UsernameContainer"]
+[node name="EmailInput" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/EmailContainer"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_constants/outline_size = 0
@@ -114,3 +107,47 @@ theme_override_colors/font_color = Color(0.25098, 0.705882, 0.337255, 1)
 theme_override_font_sizes/font_size = 20
 text = "Create an account"
 flat = true
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0, 0, 0, 0.839216)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -107.5
+offset_right = 228.0
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nree3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="SignInButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_joay3")
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Accept"
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="OnRequestCompleted"]
