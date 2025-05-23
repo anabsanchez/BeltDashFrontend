@@ -3,7 +3,7 @@ using System;
 
 public partial class GameScore : Label
 {
-    private int score = 0;
+    public int score = 0;
     private float scoreTimer = 0f;
     [Export] public float ScoreRate = 1f;  
 	

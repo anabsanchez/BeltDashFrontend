@@ -82,7 +82,9 @@ private void OnRequestCompleted(long result, long responseCode, string[] headers
                 main.userRole = role;
                 main.userUsername = username;
 
-                main.LoadScreen("scenes/UI/MainMenu.tscn");
+
+                MainMenu home = GD.Load<PackedScene>("res://scenes/UI/MainMenu.tscn").Instantiate() as MainMenu;
+		        main.LoadScreen(home);
 
                 return;
             }
@@ -101,7 +103,8 @@ private void OnRequestCompleted(long result, long responseCode, string[] headers
     private void OnRegisterLinkPressed()
     {
         var main = GetNode<Main>("/root/Main");
-        main.LoadScreen("scenes/UI/Register.tscn");
+        Register home = GD.Load<PackedScene>("res://scenes/UI/Register.tscn").Instantiate() as Register;
+		main.LoadScreen(home);
     }
     
     

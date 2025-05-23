@@ -13,7 +13,8 @@ public partial class Main : Control
     {
         screenContainer = GetNode<Control>("CanvasLayer/ScreenContainer");
 
-        LoadScreen("scenes/UI/Login.tscn");
+        Login login = GD.Load<PackedScene>("res://scenes/UI/Login.tscn").Instantiate() as Login;
+		LoadScreen(login);
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,7 +22,7 @@ public partial class Main : Control
 	{
 	}
 
-	public void LoadScreen(string scenePath)
+	public void LoadScreen(Node scene)
     {
         foreach (var child in screenContainer.GetChildren())
         {
@@ -29,8 +30,6 @@ public partial class Main : Control
                 node.QueueFree();
         }
 
-        var scene = GD.Load<PackedScene>(scenePath);
-        var instance = scene.Instantiate<Control>();
-        screenContainer.AddChild(instance);
+        screenContainer.AddChild(scene);
     }
 }

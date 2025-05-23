@@ -85,7 +85,8 @@ GD.Print("jelouuu");
                 GD.Print("Username: ", username);
 
                 var main = GetNode<Main>("/root/Main");
-                main.LoadScreen("scenes/UI/MainMenu.tscn");
+                MainMenu home = GD.Load<PackedScene>("res://scenes/UI/MainMenu.tscn").Instantiate() as MainMenu;
+		        main.LoadScreen(home);
 
                 return;
             }
@@ -104,6 +105,7 @@ GD.Print("jelouuu");
     private void OnLoginLinkPressed()
     {
         var main = GetNode<Main>("/root/Main");
-        main.LoadScreen("scenes/UI/Login.tscn");
+        Login login = GD.Load<PackedScene>("res://scenes/UI/Login.tscn").Instantiate() as Login;
+		main.LoadScreen(login);
     }
 }
