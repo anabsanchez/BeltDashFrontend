@@ -7,16 +7,20 @@ public partial class Login : Control
 	private Button signInButton;
     private Button registerLinkButton;
 	private HttpRequest request;
+    private AcceptDialog errorDialog;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         emailInput = GetNode<LineEdit>("CenterContainer/MarginContainer/VBoxContainer/FormContainer/EmailContainer/EmailInput");
-		passwordInput = GetNode<LineEdit>("CenterContainer/MarginContainer/VBoxContainer/FormContainer/PasswordContainer/PasswordInput");
+        passwordInput = GetNode<LineEdit>("CenterContainer/MarginContainer/VBoxContainer/FormContainer/PasswordContainer/PasswordInput");
         signInButton = GetNode<Button>("CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer/SignInButton");
         registerLinkButton = GetNode<Button>("CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer/RegisterLinkButton");
-		request = GetNode<HttpRequest>("HTTPRequest");
+        
+        request = GetNode<HttpRequest>("HTTPRequest");
         request.RequestCompleted += OnRequestCompleted;
+        
+        errorDialog = GetNode<AcceptDialog>("ErrorDialog");
 
         signInButton.Pressed += OnSignInPressed;
         registerLinkButton.Pressed += OnRegisterLinkPressed;
@@ -44,9 +48,6 @@ public partial class Login : Control
 			method: HttpClient.Method.Post,
 			requestData: jsonBody
 		);
-
-        //var main = GetNode<Main>("/root/Main");
-        //main.LoadScreen("scenes/UI/MainMenu.tscn");
     }
 
 private void OnRequestCompleted(long result, long responseCode, string[] headers, byte[] body)
@@ -57,34 +58,40 @@ private void OnRequestCompleted(long result, long responseCode, string[] headers
     var json = new Json();
 
     var parseResult = json.Parse(body.GetStringFromUtf8());
-    GD.Print("Parse result:", parseResult); // Esto imprimirá Error.Ok (0) si todo va bien
+    GD.Print("Parse result:", parseResult);
 
     if (parseResult == Error.Ok)
-{
+    {
     var response = (Godot.Collections.Dictionary)json.Data;
 
-    // Verifica que tenga la clave 'data'
-    if (response.ContainsKey("data"))
-    {
-        var data = (Godot.Collections.Dictionary)response["data"];
+            if (response.ContainsKey("data"))
+            {
+                var data = (Godot.Collections.Dictionary)response["data"];
 
-        string token = (string)data["token"];
-        string role = (string)data["role"];
-        string username = (string)data["username"];
+                string token = (string)data["token"];
+                string role = (string)data["role"];
+                string username = (string)data["username"];
 
-        GD.Print("Login successful - Token: ", token);
-        GD.Print("Role: ", role);
-        GD.Print("Username: ", username);
+                GD.Print("Login successful - Token: ", token);
+                GD.Print("Role: ", role);
+                GD.Print("Username: ", username);
 
-        var main = GetNode<Main>("/root/Main");
-        main.LoadScreen("scenes/UI/MainMenu.tscn");
+                var main = GetNode<Main>("/root/Main");
 
-        // Aquí puedes guardar el token en un singleton o clase global si quieres reutilizarlo
-    }
-    else
-    {
-        GD.PrintErr("La respuesta no contiene el campo 'data'");
-    }
+                main.userToken = token;
+                main.userRole = role;
+                main.userUsername = username;
+
+
+                MainMenu home = GD.Load<PackedScene>("res://scenes/UI/MainMenu.tscn").Instantiate() as MainMenu;
+		        main.LoadScreen(home);
+
+                return;
+            }
+            else
+            {
+                GD.PrintErr("La respuesta no contiene el campo 'data'");
+            }
 }
 
     else
@@ -96,7 +103,8 @@ private void OnRequestCompleted(long result, long responseCode, string[] headers
     private void OnRegisterLinkPressed()
     {
         var main = GetNode<Main>("/root/Main");
-        main.LoadScreen("scenes/UI/Register.tscn");
+        Register home = GD.Load<PackedScene>("res://scenes/UI/Register.tscn").Instantiate() as Register;
+		main.LoadScreen(home);
     }
     
     

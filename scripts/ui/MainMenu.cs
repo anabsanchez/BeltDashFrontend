@@ -18,6 +18,7 @@ public partial class MainMenu : Control
     private void OnPlayPressed()
     {
         var main = GetNode<Main>("/root/Main");
-        main.LoadScreen("scenes/Gameplay/Game.tscn");
+        Game game = GD.Load<PackedScene>("res://scenes/Gameplay/Game.tscn").Instantiate() as Game;
+		main.LoadScreen(game);
     }
 }
