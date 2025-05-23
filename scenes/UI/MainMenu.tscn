@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://qp33n2061y5i"]
 
 [ext_resource type="Script" path="res://scripts/ui/MainMenu.cs" id="1_c4g88"]
-[ext_resource type="Theme" uid="uid://cpg3008qpceks" path="res://config/UITheme.tres" id="1_ggtfh"]
+[ext_resource type="Theme" uid="uid://ccy7eg8njm6de" path="res://config/UITheme.tres" id="1_ggtfh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ld3p"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3cpg"]
 bg_color = Color(0.457177, 0.562635, 1, 1)
 
 [sub_resource type="Theme" id="Theme_xk3kp"]
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/icons/icon = null
-Button/styles/disabled = SubResource("StyleBoxFlat_7ld3p")
+Button/styles/disabled = SubResource("StyleBoxFlat_h3cpg")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

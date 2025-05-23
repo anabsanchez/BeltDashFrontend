@@ -46,6 +46,12 @@ public partial class Asteroid : Area2D
     private void _on_body_entered(Node2D body){
         if(body is Spaceship){
             GD.Print("Choque");
+
+            var parallax = GetNode<SpaceParallax>("/root/Main/Parallax2D");
+            parallax.GameOver();
+
+            var main = GetNode<Main>("/root/Main");
+            main.LoadScreen("scenes/UI/GameOver.tscn");
         }
     }
 }

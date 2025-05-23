@@ -5,7 +5,6 @@ public partial class Game : Control
 {
     private GameScore scoreLabel;
     private Timer timer;
-    private Node2D asteroidPrototype;
 
     public override async void _Ready()
     {
@@ -24,7 +23,7 @@ public partial class Game : Control
         timer = GetNode<Timer>("./Timer");
         timer.Timeout += _on_timer_timeout;
 
-        timer.WaitTime = 1f; 
+        timer.WaitTime = 1f;
         timer.Start();
     }
 

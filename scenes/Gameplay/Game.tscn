@@ -115,6 +115,7 @@ size_flags_horizontal = 4
 script = ExtResource("1_2yu1s")
 
 [node name="GameScoreLabel" type="Label" parent="."]
+z_index = 2
 layout_mode = 0
 offset_left = 454.0
 offset_top = 30.0
