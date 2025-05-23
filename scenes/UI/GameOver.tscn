@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bn72xvbgdp6gb"]
 
-[ext_resource type="Script" path="res://scenes/UI/GameOver.cs" id="1_7rbnm"]
+[ext_resource type="Script" path="res://scripts/ui/GameOver.cs" id="1_1ws03"]
 [ext_resource type="Theme" uid="uid://ccy7eg8njm6de" path="res://config/UITheme.tres" id="1_e2tr3"]
 
 [node name="GameOver" type="Control"]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7rbnm")
+script = ExtResource("1_1ws03")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 modulate = Color(1, 1, 1, 0.882353)

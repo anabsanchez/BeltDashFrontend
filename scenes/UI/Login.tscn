@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://doa0xp7s4yq37"]
+[gd_scene load_steps=5 format=3 uid="uid://doa0xp7s4yq37"]
 
 [ext_resource type="Theme" uid="uid://ccy7eg8njm6de" path="res://config/UITheme.tres" id="1_k8nfp"]
 [ext_resource type="Script" path="res://scripts/ui/Login.cs" id="1_slmqh"]
@@ -10,8 +10,6 @@ bg_color = Color(0.457177, 0.562635, 1, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/icons/icon = null
 Button/styles/disabled = SubResource("StyleBoxFlat_hfbv4")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nree3"]
 
 [node name="Login" type="Control"]
 layout_mode = 3
@@ -72,7 +70,7 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 30
-placeholder_text = "Enter your username here"
+placeholder_text = "Enter your email here"
 
 [node name="PasswordContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer"]
 layout_mode = 2
@@ -110,44 +108,15 @@ flat = true
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[node name="Panel" type="Panel" parent="."]
-modulate = Color(0, 0, 0, 0.839216)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -228.0
-offset_top = -107.5
-offset_right = 228.0
-offset_bottom = 107.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nree3")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="SignInButton" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_joay3")
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 30
-text = "Accept"
+[node name="ErrorDialog" type="AcceptDialog" parent="."]
+mode = 1
+title = "Something went wrong..."
+initial_position = 1
+size = Vector2i(400, 150)
+borderless = true
+always_on_top = true
+ok_button_text = "  Accept  "
+dialog_text = "Insert error messege."
+dialog_close_on_escape = false
 
 [connection signal="request_completed" from="HTTPRequest" to="." method="OnRequestCompleted"]
