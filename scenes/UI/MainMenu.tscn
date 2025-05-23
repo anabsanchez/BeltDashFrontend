@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://qp33n2061y5i"]
+
+[ext_resource type="Script" path="res://scripts/ui/MainMenu.cs" id="1_c4g88"]
+[ext_resource type="Theme" uid="uid://ccy7eg8njm6de" path="res://config/UITheme.tres" id="1_ggtfh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3cpg"]
+bg_color = Color(0.457177, 0.562635, 1, 1)
+
+[sub_resource type="Theme" id="Theme_xk3kp"]
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/icons/icon = null
+Button/styles/disabled = SubResource("StyleBoxFlat_h3cpg")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c4g88")
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0509804, 0.0666667, 0.0901961, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 700)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_ggtfh")
+theme_override_constants/separation = 100
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Belt Dash"
+horizontal_alignment = 1
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="PlayButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+theme = SubResource("Theme_xk3kp")
+theme_override_font_sizes/font_size = 40
+action_mode = 0
+text = "Play"
+
+[node name="RankingButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+theme = SubResource("Theme_xk3kp")
+theme_override_font_sizes/font_size = 40
+text = "Ranking"
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+theme = SubResource("Theme_xk3kp")
+theme_override_font_sizes/font_size = 40
+text = "Options"

@@ -1,0 +1,122 @@
+[gd_scene load_steps=5 format=3 uid="uid://doa0xp7s4yq37"]
+
+[ext_resource type="Theme" uid="uid://ccy7eg8njm6de" path="res://config/UITheme.tres" id="1_k8nfp"]
+[ext_resource type="Script" path="res://scripts/ui/Login.cs" id="1_slmqh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfbv4"]
+bg_color = Color(0.457177, 0.562635, 1, 1)
+
+[sub_resource type="Theme" id="Theme_joay3"]
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/icons/icon = null
+Button/styles/disabled = SubResource("StyleBoxFlat_hfbv4")
+
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_slmqh")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 700)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_k8nfp")
+theme_override_constants/separation = 100
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Login"
+horizontal_alignment = 1
+
+[node name="FormContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="EmailContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer"]
+layout_mode = 2
+
+[node name="EmailLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/EmailContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Email
+"
+
+[node name="EmailInput" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/EmailContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter your email here"
+
+[node name="PasswordContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer"]
+layout_mode = 2
+
+[node name="PasswordLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/PasswordContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Password"
+
+[node name="PasswordInput" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/PasswordContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter your password here"
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SignInButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+theme = SubResource("Theme_joay3")
+theme_override_font_sizes/font_size = 30
+text = "Sign in"
+
+[node name="RegisterLinkButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.25098, 0.705882, 0.337255, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.25098, 0.705882, 0.337255, 0.784314)
+theme_override_colors/font_pressed_color = Color(0.25098, 0.705882, 0.337255, 1)
+theme_override_colors/font_focus_color = Color(0.25098, 0.705882, 0.337255, 1)
+theme_override_colors/font_color = Color(0.25098, 0.705882, 0.337255, 1)
+theme_override_font_sizes/font_size = 20
+text = "Create an account"
+flat = true
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="ErrorDialog" type="AcceptDialog" parent="."]
+mode = 1
+title = "Something went wrong..."
+initial_position = 1
+size = Vector2i(400, 150)
+borderless = true
+always_on_top = true
+ok_button_text = "  Accept  "
+dialog_text = "Insert error messege."
+dialog_close_on_escape = false
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="OnRequestCompleted"]
