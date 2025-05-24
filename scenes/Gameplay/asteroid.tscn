@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbbyvicv0m05a"]
 
 [ext_resource type="Script" path="res://scripts/managers/Asteroid.cs" id="1_cw8xo"]
-[ext_resource type="Texture2D" uid="uid://vx8ejc688bec" path="res://assets/sprites/obstacles/ObstaclesSpritesheet.png" id="2_cpmpu"]
+[ext_resource type="Texture2D" uid="uid://beob7hgi00kar" path="res://assets/sprites/obstacles/ObstaclesSpritesheet.png" id="2_cpmpu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3oqmq"]
-radius = 53.0848
+radius = 58.0
 
 [node name="Asteroid" type="Area2D"]
 position = Vector2(118, 12)
@@ -12,13 +12,13 @@ collision_layer = 2
 script = ExtResource("1_cw8xo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(943, -102)
+position = Vector2(949, -81)
 shape = SubResource("CircleShape2D_3oqmq")
 debug_color = Color(0.984314, 0, 0.337255, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(959, -95)
-scale = Vector2(0.613636, 0.65176)
+position = Vector2(946.909, -78.9375)
+scale = Vector2(0.554367, 0.557552)
 texture = ExtResource("2_cpmpu")
 hframes = 3
 vframes = 3

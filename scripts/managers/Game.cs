@@ -48,4 +48,16 @@ public partial class Game : Control
         timer.WaitTime = (float)rnd.NextDouble() * 3f;
         timer.Start();
     }
+
+    public void PauseGame()
+    {
+        foreach (var child in GetChildren())
+        {
+            if (child is Node node)
+            {
+                node.ProcessMode = ProcessModeEnum.Disabled;
+            }
+        }
+    }
+
 }

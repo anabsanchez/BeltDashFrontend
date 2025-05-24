@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://ccy7eg8njm6de" path="res://config/UITheme.tres" id="1_e2tr3"]
 
 [node name="GameOver" type="Control"]
+z_index = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +12,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ws03")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0.619608)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 modulate = Color(1, 1, 1, 0.882353)

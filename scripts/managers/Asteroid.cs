@@ -55,12 +55,17 @@ public partial class Asteroid : Area2D
             parallax.GameOver();
 
             var main = GetNode<Main>("/root/Main");
+
+            var gameScene = GetParent() as Game;
+            gameScene.PauseGame();
+
             var gameScore = GetParent().GetNode<GameScore>("./GameScoreLabel");
 
             GameOver gameOverScene = GD.Load<PackedScene>("res://scenes/UI/GameOver.tscn").Instantiate() as GameOver;
             gameOverScene.score = gameScore.score;
 
-            main.LoadScreen(gameOverScene);
+            //main.LoadScreen(gameOverScene);
+            main.OverlayScreen(gameOverScene);
         }
     }
 }
