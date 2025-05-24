@@ -71,17 +71,19 @@ private void OnRequestCompleted(long result, long responseCode, string[] headers
                 string token = (string)data["token"];
                 string role = (string)data["role"];
                 string username = (string)data["username"];
+                int userId = (int)data["userId"];
 
                 GD.Print("Login successful - Token: ", token);
                 GD.Print("Role: ", role);
                 GD.Print("Username: ", username);
+                GD.Print("UserId: ", userId);
 
                 var main = GetNode<Main>("/root/Main");
 
                 main.userToken = token;
                 main.userRole = role;
                 main.userUsername = username;
-
+                main.userId = userId;
 
                 MainMenu home = GD.Load<PackedScene>("res://scenes/UI/MainMenu.tscn").Instantiate() as MainMenu;
 		        main.LoadScreen(home);
@@ -103,9 +105,7 @@ private void OnRequestCompleted(long result, long responseCode, string[] headers
     private void OnRegisterLinkPressed()
     {
         var main = GetNode<Main>("/root/Main");
-        Register home = GD.Load<PackedScene>("res://scenes/UI/Register.tscn").Instantiate() as Register;
-		main.LoadScreen(home);
+        Register register = GD.Load<PackedScene>("res://scenes/UI/Register.tscn").Instantiate() as Register;
+		main.LoadScreen(register);
     }
-    
-    
 }

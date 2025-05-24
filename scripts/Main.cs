@@ -7,12 +7,14 @@ public partial class Main : Control
     public string userToken;
     public string userRole;
     public string userUsername;
+    public int userId;
     private AudioStreamPlayer2D music;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         screenContainer = GetNode<Control>("CanvasLayer/ScreenContainer");
+        music = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
 
         Login login = GD.Load<PackedScene>("res://scenes/UI/Login.tscn").Instantiate() as Login;
         LoadScreen(login);
@@ -46,6 +48,7 @@ public partial class Main : Control
 
     public void SetGameMusic()
     {
-        music.SetPitchScale(0.7f);
+        //music.SetPitchScale(1f);
+        //music.SetStream(new AudioStream().);
     }
 }

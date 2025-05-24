@@ -138,6 +138,6 @@ sprite_frames = SubResource("SpriteFrames_5p6d2")
 animation = &"forward"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spaceship"]
-polygon = PackedVector2Array(938, 835, 935, 826, 936, 805, 968, 782, 976, 753, 984, 743, 990, 743, 996, 752, 1005, 781, 1036, 805, 1038, 829, 1033, 836, 1006, 823, 998, 836, 976, 837, 968, 823)
+polygon = PackedVector2Array(939, 832, 938, 826, 938, 806, 972, 783, 977, 755, 984, 745, 989, 745, 996, 755, 1003, 784, 1035, 807, 1036, 823, 1035, 832, 1004, 818, 998, 835, 976, 835, 970, 819)
 
 [node name="Timer" type="Timer" parent="."]

@@ -79,12 +79,20 @@ GD.Print("jelouuu");
                 string token = (string)data["token"];
                 string role = (string)data["role"];
                 string username = (string)data["username"];
+                int userId = (int)data["userId"];
 
                 GD.Print("Register successful - Token: ", token);
                 GD.Print("Role: ", role);
-                GD.Print("Username: ", username);
+                GD.Print("USERNAME: ", username);
+                GD.Print("UserId: ", userId);
 
                 var main = GetNode<Main>("/root/Main");
+
+                main.userToken = token;
+                main.userRole = role;
+                main.userUsername = username;
+                main.userId = userId;
+                
                 MainMenu home = GD.Load<PackedScene>("res://scenes/UI/MainMenu.tscn").Instantiate() as MainMenu;
 		        main.LoadScreen(home);
 
