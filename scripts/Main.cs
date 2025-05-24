@@ -7,6 +7,7 @@ public partial class Main : Control
     public string userToken;
     public string userRole;
     public string userUsername;
+    private AudioStreamPlayer2D music;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -32,9 +33,19 @@ public partial class Main : Control
 
         screenContainer.AddChild(scene);
     }
-    
+
     public void OverlayScreen(Node overlay)
     {
         screenContainer.AddChild(overlay);
+    }
+
+    public void ResetMusic()
+    {
+        music.SetPitchScale(0.7f);
+    }
+
+    public void SetGameMusic()
+    {
+        music.SetPitchScale(0.7f);
     }
 }
