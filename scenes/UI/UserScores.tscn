@@ -1,18 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo0nrydihbtat"]
+[gd_scene load_steps=6 format=3 uid="uid://67fbh7o8whh6"]
 
-[ext_resource type="Theme" uid="uid://ccy7eg8njm6de" path="res://config/UITheme.tres" id="1_8kcyd"]
-[ext_resource type="Script" path="res://scripts/ui/Ranking.cs" id="1_q45fk"]
-[ext_resource type="Texture2D" uid="uid://5e0uoa5anvsp" path="res://assets/sprites/icons/RoleIconsSpritesheet.png" id="2_h8xkt"]
+[ext_resource type="Theme" uid="uid://ccy7eg8njm6de" path="res://config/UITheme.tres" id="1_uexaw"]
+[ext_resource type="Script" path="res://scripts/ui/UserScores.cs" id="1_v1wfo"]
+[ext_resource type="Texture2D" uid="uid://5e0uoa5anvsp" path="res://assets/sprites/icons/RoleIconsSpritesheet.png" id="2_g4e31"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui4d5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiite"]
 bg_color = Color(0.457177, 0.562635, 1, 1)
 
-[sub_resource type="Theme" id="Theme_u3gn5"]
+[sub_resource type="Theme" id="Theme_p0vsj"]
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/icons/icon = null
-Button/styles/disabled = SubResource("StyleBoxFlat_ui4d5")
+Button/styles/disabled = SubResource("StyleBoxFlat_eiite")
 
-[node name="Ranking" type="Control"]
+[node name="UserScores" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -21,7 +21,9 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_q45fk")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_v1wfo")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -44,35 +46,29 @@ theme_override_constants/margin_bottom = 70
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_8kcyd")
+theme = ExtResource("1_uexaw")
 theme_override_constants/separation = 60
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "Ranking"
+text = "My Scores"
 horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 2
+size_flags_vertical = 0
 theme_override_constants/h_separation = 400
 theme_override_constants/v_separation = 50
-columns = 3
+columns = 2
 
-[node name="PositionHeaderLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="DateHeaderLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.588235)
 theme_override_font_sizes/font_size = 50
-text = "#"
+text = "Date"
 horizontal_alignment = 1
-
-[node name="UsernameHeaderLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.588235)
-theme_override_font_sizes/font_size = 50
-text = "Username"
 
 [node name="ScoreHeaderLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -82,23 +78,12 @@ text = "Score
 "
 horizontal_alignment = 1
 
-[node name="Line2D" type="Line2D" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
-position = Vector2(-22, 82)
-points = PackedVector2Array(2, -5, 1258, -4.99979)
-width = 3.0
-default_color = Color(1, 1, 1, 0.588235)
-round_precision = 1
-
-[node name="PositionLabel1" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-horizontal_alignment = 1
-
-[node name="UsernameLabel1" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="DateLabel1" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "
 "
+horizontal_alignment = 1
 
 [node name="ScoreLabel1" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -107,12 +92,7 @@ text = "
 "
 horizontal_alignment = 1
 
-[node name="PositionLabel2" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-horizontal_alignment = 1
-
-[node name="UsernameLabel2" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="DateLabel2" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "
@@ -125,14 +105,7 @@ text = "
 "
 horizontal_alignment = 1
 
-[node name="PositionLabel3" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "
-"
-horizontal_alignment = 1
-
-[node name="UsernameLabel3" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="DateLabel3" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "
@@ -145,14 +118,7 @@ text = "
 "
 horizontal_alignment = 1
 
-[node name="PositionLabel4" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "
-"
-horizontal_alignment = 1
-
-[node name="UsernameLabel4" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="DateLabel4" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "
@@ -165,14 +131,7 @@ text = "
 "
 horizontal_alignment = 1
 
-[node name="PositionLabel5" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "
-"
-horizontal_alignment = 1
-
-[node name="UsernameLabel5" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="DateLabel5" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "
@@ -194,7 +153,7 @@ theme_override_constants/separation = 1000
 [node name="PreviousButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.690196)
 layout_mode = 2
-theme = SubResource("Theme_u3gn5")
+theme = SubResource("Theme_p0vsj")
 theme_override_font_sizes/font_size = 30
 text = " Previous "
 
@@ -202,7 +161,7 @@ text = " Previous "
 self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 size_flags_horizontal = 8
-theme = SubResource("Theme_u3gn5")
+theme = SubResource("Theme_p0vsj")
 theme_override_font_sizes/font_size = 30
 text = " Next "
 
@@ -223,7 +182,7 @@ grow_vertical = 2
 [node name="RoleIconSprite" type="Sprite2D" parent="UserButton"]
 position = Vector2(53.3591, 51.5)
 scale = Vector2(0.628042, 0.668831)
-texture = ExtResource("2_h8xkt")
+texture = ExtResource("2_g4e31")
 hframes = 2
 
 [node name="UserPanel" type="Panel" parent="."]
@@ -258,5 +217,12 @@ theme_override_colors/font_color = Color(0.25098, 0.705882, 0.337255, 1)
 theme_override_font_sizes/font_size = 20
 text = "Go back"
 flat = true
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-583, -212)
+points = PackedVector2Array(2, -5, 1258, -4.99979)
+width = 3.0
+default_color = Color(1, 1, 1, 0.588235)
+round_precision = 1
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]

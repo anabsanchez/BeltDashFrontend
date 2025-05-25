@@ -70,6 +70,7 @@ theme_override_font_sizes/font_size = 40
 text = "Options"
 
 [node name="UserPanel" type="Panel" parent="."]
+visible = false
 self_modulate = Color(0, 0, 0, 0.764706)
 layout_mode = 1
 anchors_preset = 1

@@ -30,9 +30,9 @@ public partial class MainMenu : Control
 		}
 
 		playButton.Pressed += OnPlayPressed;
-		rankingAdminLinkButton.Pressed += OnRankingAdminPressed;
 		userButton.Pressed += OnUserPressed;
 		userScoresLinkButton.Pressed += onUserScoresPressed;
+		rankingAdminLinkButton.Pressed += OnRankingAdminPressed;
 		signOutLinkButton.Pressed += onSignOutPressed;
 	}
 
@@ -61,8 +61,8 @@ public partial class MainMenu : Control
 	
     private void onUserScoresPressed()
 	{
-		Register home = GD.Load<PackedScene>("res://scenes/UI/Login.tscn").Instantiate() as Register;
-		main.LoadScreen(home);
+		UserScores userScores = GD.Load<PackedScene>("res://scenes/UI/UserScores.tscn").Instantiate() as UserScores;
+		main.LoadScreen(userScores);
 	}
     private void onSignOutPressed()
     {
