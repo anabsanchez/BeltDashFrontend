@@ -3,13 +3,13 @@
 [ext_resource type="Theme" uid="uid://ccy7eg8njm6de" path="res://config/UITheme.tres" id="1_k8nfp"]
 [ext_resource type="Script" path="res://scripts/ui/Login.cs" id="1_slmqh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfbv4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5fvi"]
 bg_color = Color(0.457177, 0.562635, 1, 1)
 
 [sub_resource type="Theme" id="Theme_joay3"]
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/icons/icon = null
-Button/styles/disabled = SubResource("StyleBoxFlat_hfbv4")
+Button/styles/disabled = SubResource("StyleBoxFlat_c5fvi")
 
 [node name="Login" type="Control"]
 layout_mode = 3

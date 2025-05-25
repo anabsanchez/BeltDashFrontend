@@ -4,13 +4,13 @@
 [ext_resource type="Theme" uid="uid://ccy7eg8njm6de" path="res://config/UITheme.tres" id="1_ggtfh"]
 [ext_resource type="Texture2D" uid="uid://5e0uoa5anvsp" path="res://assets/sprites/icons/RoleIconsSpritesheet.png" id="3_uclbm"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3cpg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3f0p"]
 bg_color = Color(0.457177, 0.562635, 1, 1)
 
 [sub_resource type="Theme" id="Theme_xk3kp"]
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/icons/icon = null
-Button/styles/disabled = SubResource("StyleBoxFlat_h3cpg")
+Button/styles/disabled = SubResource("StyleBoxFlat_c3f0p")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -32,7 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(400, 700)
+custom_minimum_size = Vector2(400, 500)
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 70
@@ -48,7 +48,7 @@ theme_override_constants/separation = 100
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 120
 text = "Belt Dash"
 horizontal_alignment = 1
 
@@ -63,46 +63,22 @@ theme_override_font_sizes/font_size = 40
 action_mode = 0
 text = "Play"
 
-[node name="RankingButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
-layout_mode = 2
-theme = SubResource("Theme_xk3kp")
-theme_override_font_sizes/font_size = 40
-text = "Ranking"
-
 [node name="OptionsButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
 layout_mode = 2
 theme = SubResource("Theme_xk3kp")
 theme_override_font_sizes/font_size = 40
 text = "Options"
 
-[node name="UserButton" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -122.0
-offset_top = 13.0
-offset_right = -31.0
-offset_bottom = 105.0
-grow_horizontal = 0
-
-[node name="RoleIconSprite" type="Sprite2D" parent="UserButton"]
-position = Vector2(53.3591, 51.5)
-scale = Vector2(0.628042, 0.668831)
-texture = ExtResource("3_uclbm")
-hframes = 2
-
 [node name="UserPanel" type="Panel" parent="."]
-visible = false
 self_modulate = Color(0, 0, 0, 0.764706)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -299.0
-offset_top = 105.0
-offset_right = -42.0
-offset_bottom = 255.0
+offset_left = -305.0
+offset_top = 117.0
+offset_right = -48.0
+offset_bottom = 265.0
 grow_horizontal = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UserPanel"]
@@ -125,7 +101,7 @@ theme_override_font_sizes/font_size = 20
 text = "See my scores"
 flat = true
 
-[node name="GlobalRankingLinkButton2" type="Button" parent="UserPanel/VBoxContainer"]
+[node name="RankingAdminLinkButton" type="Button" parent="UserPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(0.25098, 0.705882, 0.337255, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
@@ -134,7 +110,7 @@ theme_override_colors/font_pressed_color = Color(0.25098, 0.705882, 0.337255, 1)
 theme_override_colors/font_focus_color = Color(0.25098, 0.705882, 0.337255, 1)
 theme_override_colors/font_color = Color(0.25098, 0.705882, 0.337255, 1)
 theme_override_font_sizes/font_size = 20
-text = "Global Ranking"
+text = "Global ranking"
 flat = true
 
 [node name="SignOutLinkButton" type="Button" parent="UserPanel/VBoxContainer"]
@@ -148,3 +124,23 @@ theme_override_colors/font_color = Color(0.25098, 0.705882, 0.337255, 1)
 theme_override_font_sizes/font_size = 20
 text = "Sign out"
 flat = true
+
+[node name="UserButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 833.0
+offset_top = -513.0
+offset_right = 924.0
+offset_bottom = -421.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RoleIconSprite" type="Sprite2D" parent="UserButton"]
+position = Vector2(53.3591, 51.5)
+scale = Vector2(0.628042, 0.668831)
+texture = ExtResource("3_uclbm")
+hframes = 2

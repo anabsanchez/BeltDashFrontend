@@ -6,7 +6,7 @@ public partial class MainMenu : Control
 	private Main main;
 	private Button playButton;
 	private Button userScoresLinkButton;
-	private Button globalRankingLinkButton;
+	private Button rankingAdminLinkButton;
 	private Button signOutLinkButton;
 	private TextureButton userButton;
 	private Sprite2D roleIcon;
@@ -19,8 +19,8 @@ public partial class MainMenu : Control
 		userButton = GetNode<TextureButton>("UserButton");
 		roleIcon = GetNode<Sprite2D>("UserButton/RoleIconSprite");
 		playButton = GetNode<Button>("CenterContainer/MarginContainer/VBoxContainer/ButtonsContainer/PlayButton");
-		globalRankingLinkButton = GetNode<Button>("UserPanel/VBoxContainer/GlobalRankingLinkButton2");
 		userScoresLinkButton = GetNode<Button>("UserPanel/VBoxContainer/UserScoresLinkButton");
+		rankingAdminLinkButton = GetNode<Button>("UserPanel/VBoxContainer/RankingAdminLinkButton");
 		signOutLinkButton = GetNode<Button>("UserPanel/VBoxContainer/SignOutLinkButton");
 		userPanel = GetNode<Panel>("UserPanel");
 
@@ -30,10 +30,10 @@ public partial class MainMenu : Control
 		}
 
 		playButton.Pressed += OnPlayPressed;
+		rankingAdminLinkButton.Pressed += OnRankingAdminPressed;
 		userButton.Pressed += OnUserPressed;
-		globalRankingLinkButton.Pressed += onGlobalRankingLinkPressed;
-		userScoresLinkButton.Pressed += onUserScoresLinkPressed;
-		signOutLinkButton.Pressed += onSignOutLinkPressed;
+		userScoresLinkButton.Pressed += onUserScoresPressed;
+		signOutLinkButton.Pressed += onSignOutPressed;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,21 +53,19 @@ public partial class MainMenu : Control
 		userPanel.SetVisible(userPanel.IsVisible() ? false : true);
 	}
 	
-    private void onGlobalRankingLinkPressed()
+    private void OnRankingAdminPressed()
     {
-        var main = GetNode<Main>("/root/Main");
-        Register home = GD.Load<PackedScene>("res://scenes/UI/Login.tscn").Instantiate() as Register;
-		main.LoadScreen(home);
+        Ranking ranking = GD.Load<PackedScene>("res://scenes/UI/Ranking.tscn").Instantiate() as Ranking;
+		main.LoadScreen(ranking);
     }
-    private void onUserScoresLinkPressed()
-    {
-        var main = GetNode<Main>("/root/Main");
-        Register home = GD.Load<PackedScene>("res://scenes/UI/Login.tscn").Instantiate() as Register;
+	
+    private void onUserScoresPressed()
+	{
+		Register home = GD.Load<PackedScene>("res://scenes/UI/Login.tscn").Instantiate() as Register;
 		main.LoadScreen(home);
-    }
-    private void onSignOutLinkPressed()
+	}
+    private void onSignOutPressed()
     {
-        var main = GetNode<Main>("/root/Main");
         Login login = GD.Load<PackedScene>("res://scenes/UI/Login.tscn").Instantiate() as Login;
 		main.LoadScreen(login);
     }
