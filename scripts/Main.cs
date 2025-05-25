@@ -8,6 +8,7 @@ public partial class Main : Control
     public string userRole;
     public string userUsername;
     public int userId;
+    public int userToEditId;
     private AudioStreamPlayer2D music;
 
     // Called when the node enters the scene tree for the first time.

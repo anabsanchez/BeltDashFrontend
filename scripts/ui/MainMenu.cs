@@ -55,8 +55,18 @@ public partial class MainMenu : Control
 	
     private void OnRankingAdminPressed()
     {
-        Ranking ranking = GD.Load<PackedScene>("res://scenes/UI/Ranking.tscn").Instantiate() as Ranking;
-		main.LoadScreen(ranking);
+		Control newScreen;
+
+		if (main.userRole == "admin")
+		{
+			newScreen = GD.Load<PackedScene>("res://scenes/UI/Admin.tscn").Instantiate() as Admin;
+		}
+		else
+		{
+			newScreen = GD.Load<PackedScene>("res://scenes/UI/Ranking.tscn").Instantiate() as Ranking;
+		}
+		
+		main.LoadScreen(newScreen);
     }
 	
     private void onUserScoresPressed()

@@ -78,6 +78,13 @@ text = "Score
 "
 horizontal_alignment = 1
 
+[node name="Line2D" type="Line2D" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
+position = Vector2(-173, 82)
+points = PackedVector2Array(2, -5, 1258, -4.99979)
+width = 3.0
+default_color = Color(1, 1, 1, 0.588235)
+round_precision = 1
+
 [node name="DateLabel1" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
@@ -217,12 +224,5 @@ theme_override_colors/font_color = Color(0.25098, 0.705882, 0.337255, 1)
 theme_override_font_sizes/font_size = 20
 text = "Go back"
 flat = true
-
-[node name="Line2D" type="Line2D" parent="."]
-position = Vector2(-583, -212)
-points = PackedVector2Array(2, -5, 1258, -4.99979)
-width = 3.0
-default_color = Color(1, 1, 1, 0.588235)
-round_precision = 1
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
