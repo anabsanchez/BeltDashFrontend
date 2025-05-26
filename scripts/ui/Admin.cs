@@ -36,14 +36,13 @@ public partial class Admin : Control
 
 		request.RequestCompleted += OnRequestCompleted;
 
-		roleIcon.SetFrame(1); // Siempre será admin aquí
+		roleIcon.SetFrame(1); 
 
 		userButton.Pressed += OnUserPressed;
 		backLinkButton.Pressed += OnBackPressed;
 		nextButton.Pressed += OnNextPressed;
 		previousButton.Pressed += OnPreviousPressed;
 
-		// Asignar los labels y botones
 		for (int i = 1; i <= 5; i++)
 		{
 			positionLabels.Add(GetNode<Label>($"CenterContainer/MarginContainer/VBoxContainer/GridContainer/PositionLabel{i}"));
@@ -164,8 +163,15 @@ public partial class Admin : Control
 
 			main.userToEditId = userId;
 
-			var userEdition = GD.Load<PackedScene>("res://scenes/UI/UserEdition.tscn").Instantiate();
-			main.LoadScreen(userEdition);
+			if (main.userId != main.userToEditId)
+			{
+				var userEdition = GD.Load<PackedScene>("res://scenes/UI/UserEdition.tscn").Instantiate();
+				main.LoadScreen(userEdition);
+			}
+			else
+			{
+				GD.Print("An admin cannot edit themselves");
+			}
 		}
 	}
 }

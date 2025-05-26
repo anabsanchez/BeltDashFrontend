@@ -37,7 +37,7 @@ public partial class Register : Control
 
     private void OnSignUpPressed()
     {
-GD.Print("jelouuu");
+        GD.Print("jelouuu");
         string url = "http://localhost:5064/api/v1/auth/register";
 
 		string jsonBody = Json.Stringify(new Godot.Collections.Dictionary
@@ -54,61 +54,59 @@ GD.Print("jelouuu");
 			method: HttpClient.Method.Post,
 			requestData: jsonBody
 		);
-        //var main = GetNode<Main>("/root/Main");
-        //main.LoadScreen("scenes/UI/MainMenu.tscn");
     }
 
     private void OnRequestCompleted(long result, long responseCode, string[] headers, byte[] body)
-{
-    GD.Print("Respuesta recibida - Código:", responseCode);
-    GD.Print("Cuerpo:", body.GetStringFromUtf8());
-
-    var json = new Json();
-
-    var parseResult = json.Parse(body.GetStringFromUtf8());
-    GD.Print("Parse result:", parseResult); 
-
-    if (parseResult == Error.Ok)
     {
-    var response = (Godot.Collections.Dictionary)json.Data;
+        GD.Print("Respuesta recibida - Código:", responseCode);
+        GD.Print("Cuerpo:", body.GetStringFromUtf8());
 
-            if (response.ContainsKey("data"))
-            {
-                var data = (Godot.Collections.Dictionary)response["data"];
+        var json = new Json();
 
-                string token = (string)data["token"];
-                string role = (string)data["role"];
-                string username = (string)data["username"];
-                int userId = (int)data["userId"];
+        var parseResult = json.Parse(body.GetStringFromUtf8());
+        GD.Print("Parse result:", parseResult); 
 
-                GD.Print("Register successful - Token: ", token);
-                GD.Print("Role: ", role);
-                GD.Print("USERNAME: ", username);
-                GD.Print("UserId: ", userId);
+        if (parseResult == Error.Ok)
+        {
+        var response = (Godot.Collections.Dictionary)json.Data;
 
-                var main = GetNode<Main>("/root/Main");
+                if (response.ContainsKey("data"))
+                {
+                    var data = (Godot.Collections.Dictionary)response["data"];
 
-                main.userToken = token;
-                main.userRole = role;
-                main.userUsername = username;
-                main.userId = userId;
-                
-                MainMenu home = GD.Load<PackedScene>("res://scenes/UI/MainMenu.tscn").Instantiate() as MainMenu;
-		        main.LoadScreen(home);
+                    string token = (string)data["token"];
+                    string role = (string)data["role"];
+                    string username = (string)data["username"];
+                    int userId = (int)data["userId"];
 
-                return;
-            }
-            else
-            {
-                GD.PrintErr("La respuesta no contiene el campo 'data'");
-            }
-}
+                    GD.Print("Register successful - Token: ", token);
+                    GD.Print("Role: ", role);
+                    GD.Print("USERNAME: ", username);
+                    GD.Print("UserId: ", userId);
 
-    else
-    {
-        GD.PrintErr("Error al parsear JSON");
+                    var main = GetNode<Main>("/root/Main");
+
+                    main.userToken = token;
+                    main.userRole = role;
+                    main.userUsername = username;
+                    main.userId = userId;
+                    
+                    MainMenu home = GD.Load<PackedScene>("res://scenes/UI/MainMenu.tscn").Instantiate() as MainMenu;
+                    main.LoadScreen(home);
+
+                    return;
+                }
+                else
+                {
+                    GD.PrintErr("La respuesta no contiene el campo 'data'");
+                }
     }
-}
+
+        else
+        {
+            GD.PrintErr("Error al parsear JSON");
+        }
+    }
 
     private void OnLoginLinkPressed()
     {

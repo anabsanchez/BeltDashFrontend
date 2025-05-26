@@ -177,7 +177,7 @@ public partial class UserEdition : Control
 				break;
 			case UpdateStep.Status:
 				step = UpdateStep.None;
-				UpdateNextField(); // libera el botón
+				UpdateNextField();
 				break;
 		}
 	}

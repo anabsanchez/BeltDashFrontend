@@ -64,7 +64,6 @@ public partial class Asteroid : Area2D
             GameOver gameOverScene = GD.Load<PackedScene>("res://scenes/UI/GameOver.tscn").Instantiate() as GameOver;
             gameOverScene.score = gameScore.score;
 
-            //main.LoadScreen(gameOverScene);
             main.OverlayScreen(gameOverScene);
         }
     }

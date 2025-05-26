@@ -33,8 +33,6 @@ public partial class Game : Control
 
         Asteroid newAsteroid = GD.Load<PackedScene>("res://scenes/Gameplay/asteroid.tscn").Instantiate() as Asteroid;
 
-        // newAsteroid.GlobalPosition = new Vector2(rnd.Next(300, 1700), -200);
-
         float minX = -500f;
         float maxX = 500f;
 
