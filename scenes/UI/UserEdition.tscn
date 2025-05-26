@@ -1,0 +1,243 @@
+[gd_scene load_steps=11 format=3 uid="uid://2iuwbsyppssd"]
+
+[ext_resource type="Script" path="res://scripts/ui/UserEdition.cs" id="1_bsypa"]
+[ext_resource type="Theme" uid="uid://ccy7eg8njm6de" path="res://config/UITheme.tres" id="1_mme64"]
+[ext_resource type="Texture2D" uid="uid://bwemu2hx22s40" path="res://assets/sprites/icons/PlayerIcon.png" id="2_h4ntk"]
+[ext_resource type="Texture2D" uid="uid://b0lobwsrb2wsu" path="res://assets/sprites/icons/AdminIcon.png" id="3_emrfh"]
+[ext_resource type="Texture2D" uid="uid://5e0uoa5anvsp" path="res://assets/sprites/icons/RoleIconsSpritesheet.png" id="4_kpsnq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajkp0"]
+bg_color = Color(0.294118, 0.14902, 0.713726, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3g3xq"]
+bg_color = Color(0.294118, 0.14902, 0.713726, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqce3"]
+bg_color = Color(0.294118, 0.14902, 0.713726, 0.631373)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5fvi"]
+bg_color = Color(0.457177, 0.562635, 1, 1)
+
+[sub_resource type="Theme" id="Theme_uk0w5"]
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/icons/icon = null
+Button/styles/disabled = SubResource("StyleBoxFlat_c5fvi")
+
+[node name="UserEdition" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_bsypa")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(1000, 700)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_mme64")
+theme_override_constants/separation = 60
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Edit User"
+horizontal_alignment = 1
+
+[node name="FormContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="UsernameContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer"]
+layout_mode = 2
+
+[node name="UsernameLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/UsernameContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Username"
+
+[node name="UsernameInput" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/UsernameContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter new username here"
+
+[node name="EmailContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer"]
+layout_mode = 2
+
+[node name="EmailLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/EmailContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Email"
+
+[node name="EmailInput" type="LineEdit" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/EmailContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter new email here"
+
+[node name="RoleContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer"]
+layout_mode = 2
+
+[node name="RoleLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/RoleContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Role"
+
+[node name="RoleDropdown" type="OptionButton" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/RoleContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_ajkp0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3g3xq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iqce3")
+expand_icon = true
+selected = 0
+allow_reselect = true
+item_count = 2
+popup/item_0/text = "player"
+popup/item_0/icon = ExtResource("2_h4ntk")
+popup/item_1/text = "admin"
+popup/item_1/icon = ExtResource("3_emrfh")
+popup/item_1/id = 1
+
+[node name="StatusContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="StatusLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/StatusContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Status"
+
+[node name="StatusCheckbox" type="CheckButton" parent="CenterContainer/MarginContainer/VBoxContainer/FormContainer/StatusContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 1.97
+theme_override_colors/font_color = Color(0.545098, 0.282353, 0.74902, 1)
+theme_override_colors/icon_normal_color = Color(0.545098, 0.282353, 0.74902, 1)
+theme_override_font_sizes/font_size = 30
+button_pressed = true
+flat = true
+alignment = 2
+clip_text = true
+expand_icon = true
+
+[node name="SaveButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_uk0w5")
+theme_override_font_sizes/font_size = 30
+text = "Save changes"
+
+[node name="UserButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 833.0
+offset_top = -513.0
+offset_right = 924.0
+offset_bottom = -421.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RoleIconSprite" type="Sprite2D" parent="UserButton"]
+position = Vector2(53.3591, 51.5)
+scale = Vector2(0.628042, 0.668831)
+texture = ExtResource("4_kpsnq")
+hframes = 2
+frame = 1
+
+[node name="UserPanel" type="Panel" parent="."]
+visible = false
+self_modulate = Color(0, 0, 0, 0.764706)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 655.0
+offset_top = -421.0
+offset_right = 912.0
+offset_bottom = -372.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackLinkButton" type="Button" parent="UserPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.25098, 0.705882, 0.337255, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.25098, 0.705882, 0.337255, 0.784314)
+theme_override_colors/font_pressed_color = Color(0.25098, 0.705882, 0.337255, 1)
+theme_override_colors/font_focus_color = Color(0.25098, 0.705882, 0.337255, 1)
+theme_override_colors/font_color = Color(0.25098, 0.705882, 0.337255, 1)
+theme_override_font_sizes/font_size = 20
+text = "Go back"
+flat = true
+
+[node name="HTTPRequestUser" type="HTTPRequest" parent="."]
+
+[node name="HTTPRequestRole" type="HTTPRequest" parent="."]
+
+[node name="HTTPRequestStatus" type="HTTPRequest" parent="."]
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
