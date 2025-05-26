@@ -37,3 +37,4 @@ grow_vertical = 2
 stream = ExtResource("4_d1wei")
 pitch_scale = 0.7
 autoplay = true
+parameters/looping = true

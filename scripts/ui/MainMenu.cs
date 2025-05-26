@@ -27,6 +27,7 @@ public partial class MainMenu : Control
 		if (main.userRole == "admin")
 		{
 			roleIcon.SetFrame(1);
+			rankingAdminLinkButton.SetText("Admin");
 		}
 
 		playButton.Pressed += OnPlayPressed;
